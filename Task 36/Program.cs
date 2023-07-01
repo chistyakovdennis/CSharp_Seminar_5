@@ -4,23 +4,39 @@
 
 class Program
 {
-    static void Main(string[] args)
+    static void Main()
     {
-        int[] numbers = new int[10]; // создаем массив из 10 элементов
-        int sum = 0;
+        // Создаем объект генератора случайных чисел
+        Random random = new Random();
 
-        Random random = new Random(); // создаем объект для генерации случайных чисел
+        // Задаем размер массива
+        int size = 10;
 
-        for (int i = 0; i < numbers.Length; i++)
+        // Создаем и заполняем массив случайными числами
+        int[] array = new int[size];
+        for (int i = 0; i < size; i++)
         {
-            numbers[i] = random.Next(1, 100); // заполняем массив случайными числами от 1 до 100
-
-            if (i % 2 != 0) // проверяем, является ли индекс нечетным
-            {
-                sum += numbers[i]; // если да, то добавляем значение элемента к переменной sum
-            }
+            array[i] = random.Next(1, 100);
         }
 
-        Console.WriteLine($"Сумма элементов на нечетных позициях равна {sum}");
+        // Выводим массив
+        Console.WriteLine("Массив случайных чисел:");
+        for (int i = 0; i < size; i++)
+        {
+            Console.Write(array[i] + " ");
+        }
+        Console.WriteLine();
+
+        // Переменная для хранения суммы элементов на нечетных позициях
+        int sum = 0;
+
+        // Вычисляем сумму элементов на нечетных позициях
+        for (int i = 1; i < size; i += 2)
+        {
+            sum += array[i];
+        }
+
+        // Выводим результат
+        Console.WriteLine("Сумма элементов на нечетных позициях: " + sum);
     }
 }
